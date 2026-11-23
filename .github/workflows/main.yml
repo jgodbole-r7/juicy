@@ -12,7 +12,7 @@ jobs:
 
       # Injects the decoy AWS credentials
       - name: Deploy Tracebit Canaries
-        uses: tracebit-com/tracebit-community-action@v1
+        uses: tracebit-com/tracebit-community-action@b149c6c24dbd25df59fe3c81419a96757a06a2e8
         with:
           security-api-token: ${{ secrets.SECURITY_API_TOKEN }}
 
