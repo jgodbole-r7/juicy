@@ -1,0 +1,21 @@
+name: Tracebit Canary Test
+
+on:
+  push:
+    branches: [ test-tracebit ]
+
+jobs:
+  test-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Injects the decoy AWS credentials
+      - name: Deploy Tracebit Canaries
+        uses: tracebit-com/tracebit-community-action@v1
+        with:
+          security-api-token: ${{ secrets.SECURITY_API_TOKEN }}
+
+      # Triggers the fake alert
+      - name: Trigger Canary Alert
+        run: aws sts get-caller-identity || true
